@@ -9,9 +9,10 @@ import lombok.Setter;
 @Getter
 @Setter
 public class TransacaoDto {
+	private Integer id;
 	private String ticker;
 	private BigDecimal preco;
-	private int quantidade;
+	private Integer quantidade;
 	private TipoTransacao tipo;
 
 
