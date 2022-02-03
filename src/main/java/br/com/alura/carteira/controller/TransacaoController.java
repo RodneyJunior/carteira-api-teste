@@ -41,7 +41,7 @@ public class TransacaoController {
 		 
 		 
 		 URI uri = uriBuilder.path("/transacoes/{id}").buildAndExpand(transacaoDto.getId()).toUri();
-		return ResponseEntity.created(uri ).body(transacaoDto);
+		return ResponseEntity.created(uri).body(transacaoDto);
 		
 	}
 	

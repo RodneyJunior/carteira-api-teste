@@ -18,3 +18,5 @@ public interface TransacaoRepository extends JpaRepository<Transacao, Long>{
 	List<ItemCarteiraDto> relatorioCarteiraDeInvestimentos();
 	
 	}
+// o * .1.0 serve para o JPA não converter o resultado para long
+//34:55

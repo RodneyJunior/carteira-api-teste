@@ -16,33 +16,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import br.com.alura.carteira.dto.TransacaoDto;
 import br.com.alura.carteira.dto.UsuarioDto;
 import br.com.alura.carteira.dto.UsuarioFormDto;
 import br.com.alura.carteira.service.UsuarioService;
 
-
 @RestController
 @RequestMapping("/usuarios")
 public class UsuarioController {
-	
+
 	@Autowired
 	private UsuarioService service;
-	
-		
-	@GetMapping	
-	public Page<UsuarioDto> listar(@PageableDefault(size = 10) Pageable paginacao){
-	return service.Listar(paginacao);		
+
+	@GetMapping
+	public Page<UsuarioDto> listar(@PageableDefault(size = 10) Pageable paginacao) {
+		return service.Listar(paginacao);
 	}
+
 	@PostMapping
 	public ResponseEntity<UsuarioDto> cadastrar(@RequestBody @Valid UsuarioFormDto dto,
-			UriComponentsBuilder uriBuilder
-			) {
-		UsuarioDto usuarioDto =service.Cadastrar(dto);	
-		
-		 
-		 URI uri = uriBuilder.path("/usuarios/{id}").buildAndExpand(usuarioDto.getId()).toUri();
-		return ResponseEntity.created(uri ).body(usuarioDto);
+			UriComponentsBuilder uriBuilder) {
+		UsuarioDto usuarioDto = service.Cadastrar(dto);
+
+		URI uri = uriBuilder.path("/usuarios/{id}").buildAndExpand(usuarioDto.getId()).toUri();
+		return ResponseEntity.created(uri).body(usuarioDto);
 	}
 
 }
