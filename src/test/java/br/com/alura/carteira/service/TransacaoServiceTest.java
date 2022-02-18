@@ -37,14 +37,7 @@ class TransacaoServiceTest {
 	@Test
 	void deveriaCadastrarUmaTransacao() {
 		
-		TransacaoFormDto formDto = new TransacaoFormDto(
-				"ITSA4",
-				new BigDecimal("10.45"),
-				120,
-				TipoTransacao.COMPRA,
-				LocalDate.now(),
-				4l
-				);
+		TransacaoFormDto formDto = criarTransacaoFormDto();
 
 		TransacaoDto dto = service.Cadastrar(formDto);
 		
@@ -56,6 +49,17 @@ class TransacaoServiceTest {
 		assertEquals(formDto.getTipo(), dto.getTipo());
 		
 		
+	}
+	private TransacaoFormDto criarTransacaoFormDto() {
+		TransacaoFormDto formDto = new TransacaoFormDto(
+				"ITSA4",
+				new BigDecimal("10.45"),
+				120,
+				TipoTransacao.COMPRA,
+				LocalDate.now(),
+				4l
+				);
+		return formDto;
 	}
 	@Test
 	void naoDeveriaCadastrarUmaTransacaoComUsuarioInexistente() {
